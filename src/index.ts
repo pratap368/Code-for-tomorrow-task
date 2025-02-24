@@ -15,9 +15,9 @@ const server=http.createServer(app);
 const io=new Server(server,{cors:{origin:""}});
 
 app.use(express.json());       
-app.use(cookieParser());        
-app.use(sessionMiddleware);     
-app.use(router);               
+app.use(cookieParser());            
+app.use(router);     
+app.use(sessionMiddleware);           
 app.use(errorHandler);          
 
 
