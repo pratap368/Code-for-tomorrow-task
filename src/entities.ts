@@ -14,3 +14,18 @@ export class User{
     @Column({ nullable: true, type: "text", default: null }) 
     sessionToken: string | null;
 }
+@Entity()
+export class Product {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
+    name: string;
+
+    @Column("decimal", { precision: 10, scale: 2 }) 
+    price: number;
+
+    @Column({ type: "text", nullable: true })
+    description: string;
+
+}

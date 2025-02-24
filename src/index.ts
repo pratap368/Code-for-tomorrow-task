@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 import { AppDataSource } from "./db";
 import router from "./authRouter";
 import dotenv from "dotenv";
-import sessionMiddleware from "./sessionMiddleware";
 import errorHandler from "./errorhandllingMiddleware";;
 
 
@@ -16,8 +15,7 @@ const io=new Server(server,{cors:{origin:""}});
 
 app.use(express.json());       
 app.use(cookieParser());            
-app.use(router);     
-app.use(sessionMiddleware);           
+app.use(router);               
 app.use(errorHandler);          
 
 

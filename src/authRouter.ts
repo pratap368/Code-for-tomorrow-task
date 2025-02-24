@@ -1,11 +1,16 @@
 import {Router,RequestHandler} from "express";
 const router=Router();
-import { registeruser,login,logout} from "./controller";
+import { registerUser,login,logout,addProduct,getAllproducts,getProductById} from "./controller";
 import { validateRegister, validateLogin} from "./validator";
+import sessionMiddleware from "./sessionMiddleware";
+router.post("/register",validateRegister,registerUser);
+router.post("/login",validateLogin,login);
+router.post("/logout",logout)
 
-router.post("/register",validateRegister,registeruser as RequestHandler);
-router.post("/login",validateLogin,login as  RequestHandler);
-router.post("/logout",logout as RequestHandler)
+//Product Routes
+router.post("/addproduct",sessionMiddleware,addProduct);
+router.get("/getAllproducts",sessionMiddleware,getAllproducts);
+router.get("/getProductById/:id",sessionMiddleware,getProductById);
 
 export default router;
 
